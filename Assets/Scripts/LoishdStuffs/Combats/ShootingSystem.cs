@@ -30,4 +30,5 @@ public class ShootingSystem : MonoBehaviour
 
         Destroy(bullet, 2f);
     }
+
 }

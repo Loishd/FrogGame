@@ -425,6 +425,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpPower: 3.5
+  dbJumpCount: 0
 --- !u!114 &875336592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,7 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7163e7723d0045c4f86b3226bfcc7c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: 3
+  enemyHP: 5
 --- !u!50 &1927243528
 Rigidbody2D:
   serializedVersion: 4

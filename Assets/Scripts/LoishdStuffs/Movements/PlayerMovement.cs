@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float castDistance;
     public LayerMask groundLayer;
     public float jumpPower = 2f;
+    public float dbJumpCount;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();  
         sr = GetComponent<SpriteRenderer>();
 
+        dbJumpCount = 1f;
         sr.flipX = false;
     }
 
@@ -27,16 +29,26 @@ public class PlayerMovement : MonoBehaviour
     {
         FlipImage();
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
+        if ((Input.GetKeyDown(KeyCode.Space) && isGrounded()))
         {
             rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 100));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded() && dbJumpCount > 0)
+        {
+            rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 100));
+            dbJumpCount = 0;
+        }
+
+        if (isGrounded())
+        {
+            dbJumpCount = 1;
         }
     }
 
     void FixedUpdate()
     {
         Movement();
-
     }
 
     public void Movement()
