@@ -6,6 +6,10 @@ public class ShootingSystem : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public float bulletSpeed = 50f;
+    public float fireRate = 0.5f;
+    private float nextFireTime;
+    private Vector2 shootDirection;
+    public Transform firePoint;
 
     void Start()
     {
@@ -13,22 +17,35 @@ public class ShootingSystem : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && (Time.time >= nextFireTime))
         {
             Shoot();
+            nextFireTime = Time.time + fireRate;    
         }
     }
 
     void Shoot()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
 
-        Vector3 shootDirection = (mousePosition - transform.position).normalized;
+        if (Input.GetKey(KeyCode.A))
+        {
+            shootDirection = Vector2.left;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            shootDirection = Vector2.right;
+        }
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x, shootDirection.y) * bulletSpeed;   
+        if (Input.GetKey(KeyCode.W)) 
+        {
+            shootDirection = Vector2.up;
+        }
 
-        Destroy(bullet, 2f);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * bulletSpeed; 
+
+        Destroy(bullet, 0.5f);  
     }
 
 }

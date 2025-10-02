@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public int bulletDamage = 1;
+    public LayerMask destroyOnHitGround;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,8 +16,11 @@ public class BulletScript : MonoBehaviour
             enemy.TakeDamage(bulletDamage);
 
             Destroy(gameObject);
-
-
+        }
+        
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
         }
     }
 }

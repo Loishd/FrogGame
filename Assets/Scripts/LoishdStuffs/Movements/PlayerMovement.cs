@@ -29,18 +29,18 @@ public class PlayerMovement : MonoBehaviour
     {
         FlipImage();
 
-        if ((Input.GetKeyDown(KeyCode.Space) && isGrounded()))
+        if ((Input.GetKeyDown(KeyCode.Space) && isGrounded())) //Normal Jump
         {
             rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 100));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded() && dbJumpCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded() && dbJumpCount > 0) //DB Jump
         {
-            rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 100));
+            rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 50));
             dbJumpCount = 0;
         }
 
-        if (isGrounded())
+        if (isGrounded()) //DB Jump reset
         {
             dbJumpCount = 1;
         }
