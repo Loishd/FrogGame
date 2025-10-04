@@ -12,7 +12,7 @@ public class Move : MonoBehaviour
     [SerializeField] private float _speed = 4f;
     [SerializeField] private bool GroundTouched;
     private float speed = 8f;
-    private float JumpPower = 16f;
+    private float JumpPower = 4f;
     private bool isFacingRight = true;
     private Rigidbody2D spawnProjectile;
 
@@ -89,7 +89,7 @@ public class Move : MonoBehaviour
     }
     IEnumerator Collision_Out()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
         GroundTouched = false;
     }
     private void OnCollisionEnter2D(Collision2D Ground)
