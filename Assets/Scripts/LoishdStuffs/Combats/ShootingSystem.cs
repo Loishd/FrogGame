@@ -10,24 +10,50 @@ public class ShootingSystem : MonoBehaviour
     private float nextFireTime;
     private Vector2 shootDirection;
     public Transform firePoint;
+    private SpriteRenderer sr;
 
     void Start()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
+
+
+        sr.flipX = false;
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && (Time.time >= nextFireTime))
+        if (Input.GetMouseButton(0) && (Time.time >= nextFireTime))
         {
             Shoot();
             nextFireTime = Time.time + fireRate;    
         }
+
+        FlipImage();
+        ChangeDirection();
     }
 
     void Shoot()
     {
-        
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * bulletSpeed; 
 
+        Destroy(bullet, 0.5f);  
+    }
+
+    public void FlipImage()
+    {
+        //Flip Image
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            sr.flipX = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            sr.flipX = false;
+        }
+    }
+
+    public void ChangeDirection()
+    {
         if (Input.GetKey(KeyCode.A))
         {
             shootDirection = Vector2.left;
@@ -37,15 +63,9 @@ public class ShootingSystem : MonoBehaviour
             shootDirection = Vector2.right;
         }
 
-        if (Input.GetKey(KeyCode.W)) 
+        if (Input.GetKey(KeyCode.W))
         {
             shootDirection = Vector2.up;
         }
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * bulletSpeed; 
-
-        Destroy(bullet, 0.5f);  
     }
-
 }

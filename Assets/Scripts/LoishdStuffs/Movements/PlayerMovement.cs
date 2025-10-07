@@ -13,21 +13,21 @@ public class PlayerMovement : MonoBehaviour
     public float dbJumpCount;
 
     private Rigidbody2D rb;
-    private SpriteRenderer sr;
+    
     
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  
-        sr = GetComponent<SpriteRenderer>();
+        
 
         dbJumpCount = 1f;
-        sr.flipX = false;
+        
     }
 
     void Update()
     {
-        FlipImage();
+        
 
         if ((Input.GetKeyDown(KeyCode.Space) && isGrounded())) //Normal Jump
         {
@@ -63,18 +63,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void FlipImage()
-    {
-        //Flip Image
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            sr.flipX = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            sr.flipX = false;
-        }
-    }
+    
 
     public bool isGrounded()
     {
