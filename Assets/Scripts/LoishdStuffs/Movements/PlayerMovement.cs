@@ -34,13 +34,13 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 100));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded() && dbJumpCount > 0) //DB Jump
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded() && dbJumpCount > 0 && PlayerStatus.Instance.getDoubleJump == true) //DB Jump
         {
             rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 50));
             dbJumpCount = 0;
         }
 
-        if (isGrounded()) //DB Jump reset
+        if (isGrounded() && PlayerStatus.Instance.getDoubleJump == true) //DB Jump reset
         {
             dbJumpCount = 1;
         }
