@@ -10,11 +10,11 @@ public class ShootingSystem : MonoBehaviour
     private float nextFireTime;
     private Vector2 shootDirection;
     public Transform firePoint;
-    private SpriteRenderer sr;
+    [SerializeField]private SpriteRenderer sr;
 
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        //sr = GetComponent<SpriteRenderer>();
 
 
         sr.flipX = false;
