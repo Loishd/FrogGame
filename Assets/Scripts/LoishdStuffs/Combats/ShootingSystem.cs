@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShootingSystem : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject bulletPrefab2;
     public float bulletSpeed = 50f;
     public float fireRate = 0.5f;
     private float nextFireTime;
@@ -14,9 +15,7 @@ public class ShootingSystem : MonoBehaviour
 
     void Start()
     {
-        //sr = GetComponent<SpriteRenderer>();
-
-
+        PlayerStatus.Instance.playerCurrentGun = 0;
         sr.flipX = false;
     }
     void Update()
@@ -33,10 +32,19 @@ public class ShootingSystem : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * bulletSpeed; 
+        if (PlayerStatus.Instance.playerCurrentGun == 0)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * bulletSpeed;
+            Destroy(bullet, 0.25f);
+        }
+        else if (PlayerStatus.Instance.playerCurrentGun == 1)
+        {
+            GameObject bullet = Instantiate(bulletPrefab2, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * bulletSpeed;
+            Destroy(bullet, 0.25f);
+        }
 
-        Destroy(bullet, 0.5f);  
     }
 
     public void FlipImage()

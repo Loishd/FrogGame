@@ -27,8 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
-
         if ((Input.GetKeyDown(KeyCode.Space) && isGrounded())) //Normal Jump
         {
             rb.AddForce(new Vector2(rb.velocity.x, jumpPower * 100));

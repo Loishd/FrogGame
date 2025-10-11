@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemScript : MonoBehaviour
+public class PowerUpScripts : MonoBehaviour
 {
     public bool canInteract;
-
+    public PowerUPsDescription PUD;
     void Start()
     {
         canInteract = false;
     }
 
-    
     void Update()
     {
         if (canInteract == true)
         {
-            PlayerStatus.Instance.getDoubleJump = true;
-            Destroy(gameObject);
+            if (PUD.powerUpIndex == 0)
+            {
+                PlayerStatus.Instance.getDoubleJump = true;
+                Destroy(gameObject);
+            }
         }
     }
 
