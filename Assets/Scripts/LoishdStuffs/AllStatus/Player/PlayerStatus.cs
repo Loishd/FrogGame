@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     public int playerCurrentGun;
+    public bool climbingState;
     public bool getDoubleJump;
 
     public static PlayerStatus Instance { get; private set; }
@@ -24,7 +25,8 @@ public class PlayerStatus : MonoBehaviour
 
     void Start()
     {
-        getDoubleJump = false;    
+        getDoubleJump = false;  
+        climbingState = false;
     }
 
     
