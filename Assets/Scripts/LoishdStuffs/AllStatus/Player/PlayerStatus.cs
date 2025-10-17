@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer sr;
+
+    public float playerHP = 1f;
     public int playerCurrentGun;
     public bool climbingState;
     public bool getDoubleJump;
+    public bool getTOU;
 
     public static PlayerStatus Instance { get; private set; }
 
@@ -14,18 +18,19 @@ public class PlayerStatus : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // Destroy duplicate instances
+            Destroy(gameObject); 
         }
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: Persist across scene changes
+            DontDestroyOnLoad(gameObject); 
         }
     }
 
     void Start()
     {
         getDoubleJump = false;  
+        getTOU = false;
         climbingState = false;
     }
 
@@ -33,5 +38,34 @@ public class PlayerStatus : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void TakeDamage(int damage)
+    {
+        playerHP -= damage;
+        if (playerHP <= 0 && getTOU == true)
+        {
+            StartCoroutine(FlashFeedback());
+            playerHP = 1;
+            getTOU = false;
+        }
+        else if (playerHP <= 0)
+        {
+            TriggerDeath();
+        }
+        
+    }
+
+    void TriggerDeath()
+    {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator FlashFeedback()
+    {
+        Color color = sr.color;
+        sr.color = Color.green;
+        yield return new WaitForSeconds(0.2f);
+        sr.color = color;
     }
 }

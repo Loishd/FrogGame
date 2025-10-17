@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 5f;
+    public float climbSpeed = 5f;
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
@@ -66,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             float movementVertical = Input.GetAxis("Vertical");
 
-            Vector2 movement = new Vector2(0f, movementVertical * playerSpeed);
+            Vector2 movement = new Vector2(0f, movementVertical * climbSpeed);
             rb.velocity = movement;
         }
 

@@ -20,6 +20,12 @@ public class PowerUpScripts : MonoBehaviour
                 PlayerStatus.Instance.getDoubleJump = true;
                 Destroy(gameObject);
             }
+
+            else if (PUD.powerUpIndex == 1)
+            {
+                PlayerStatus.Instance.getTOU = true;
+                Destroy(gameObject);
+            }
         }
     }
 
