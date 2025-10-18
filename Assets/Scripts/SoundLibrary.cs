@@ -2,25 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public struct MusicTrack
+public struct SoundEffect
 {
-    public string trackName;
-    public AudioClip clip;
+    public string groupID;
+    public AudioClip[] clips;
 }
+  
+
 
 public class SoundLibrary : MonoBehaviour
 {
-    public MusicTrack[] tracks;
-    public AudioClip GetClipFromName(string trackName)
+    public SoundEffect[] soundEffects;
+    public AudioClip GetClipFromName(string name)
+    
     {
-        foreach (var track in tracks)
+        foreach (var soundEffect in soundEffects)
         {
-            if (track.trackName == trackName)
+            if (soundEffect.groupID == name)
             {
-                return track.clip;
+                int index = Random.Range(0, soundEffect.clips.Length);
+                return soundEffect.clips[index];
             }
         }
         return null;
+    }
 
-    } 
+    
 }
+
