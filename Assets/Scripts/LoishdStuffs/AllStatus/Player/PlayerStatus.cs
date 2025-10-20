@@ -36,6 +36,10 @@ public class PlayerStatus : MonoBehaviour
     
     void Update()
     {
+        if (climbingState == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) PlayerStatus.Instance.climbingState = false;
+        }
         
     }
 

@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
             dbJumpCount = 1;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space)) PlayerStatus.Instance.climbingState = false;
+
         DropDown();
     }
 
@@ -69,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
 
             Vector2 movement = new Vector2(0f, movementVertical * climbSpeed);
             rb.velocity = movement;
+
+            
         }
 
 
@@ -107,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S) && isGrounded() && isOnPlatformed() && playerCollider.enabled)
         {
-            StartCoroutine(DisablePlayerCollider(0.40f));
+            StartCoroutine(DisablePlayerCollider(0.45f));
         }
 
     }
