@@ -19,9 +19,9 @@ public class BasicEnemyShooting : MonoBehaviour
     
     void Update()
     {
-        //Check if player is in range.
         if (player != null) 
         {
+            //Check if player is in range.
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
             if (distance <= triggerDistance)

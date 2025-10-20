@@ -23,7 +23,6 @@ public class PlayerStatus : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
         }
     }
 

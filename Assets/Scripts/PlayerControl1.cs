@@ -9,14 +9,12 @@ public class Move : MonoBehaviour
 {
     [SerializeField] private float horizontal;
     [SerializeField] private Rigidbody2D _projectilePrefab;
-    [SerializeField] private float _speed = 4f;
     [SerializeField] private bool GroundTouched;
     private float speed = 8f;
     private float JumpPower = 4f;
     private bool isFacingRight = true;
     private Rigidbody2D spawnProjectile;
 
-    private float Bullet_speed = 10;
     private float LastDirection = 10;
 
     [SerializeField] private Rigidbody2D rb;

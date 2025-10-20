@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S) && isGrounded() && isOnPlatformed() && playerCollider.enabled)
         {
-            StartCoroutine(DisablePlayerCollider(0.5f));
+            StartCoroutine(DisablePlayerCollider(0.40f));
         }
 
     }
