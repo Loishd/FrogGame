@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             dbJumpCount = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) PlayerStatus.Instance.climbingState = false;
+        
 
         DropDown();
     }
