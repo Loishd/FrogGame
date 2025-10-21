@@ -16,6 +16,8 @@ public class EnemyBulletScript : MonoBehaviour
         playerPos = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = playerPos.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed;
+
+        Destroy(gameObject, 5f);
     }
 
     void Update()
