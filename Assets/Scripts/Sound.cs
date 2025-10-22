@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class Sound : MonoBehaviour
 {
-    // Start is called before the first frame update
+   
     void Start()
     {
         
@@ -14,7 +14,7 @@ public class Test : MonoBehaviour
         SoundManager.Instance.PlaySound2D("group1");
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         
