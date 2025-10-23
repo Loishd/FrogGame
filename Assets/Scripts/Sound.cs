@@ -7,14 +7,18 @@ public class Sound : MonoBehaviour
    
     void Start()
     {
-        
+
     }
-    public void duck()
+    public void Sound1()
     {
-        SoundManager.Instance.PlaySound2D("group1");
+        SoundManager.Instance.PlaySound2D("AAA");
+    }
+    public void Sound2()
+    {
+        SoundManager.Instance.PlaySound2D("");
     }
 
-   
+
     void Update()
     {
         

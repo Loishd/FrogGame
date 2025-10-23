@@ -1808,11 +1808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - groupID: group1
+  - groupID: AAA
     clips:
     - {fileID: 8300000, guid: c6f3e0cadc4ef5f4bb3f352e4bd0aeb8, type: 3}
-    - {fileID: 8300000, guid: dd6e4b3db68cb544cab79daa2dd2679e, type: 3}
-    - {fileID: 8300000, guid: cdf94fe86bd6b444e82f6d8a29d3d8dc, type: 3}
   - groupID: 
     clips: []
 --- !u!114 &1313052393
@@ -2545,8 +2543,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1698904021}
-        m_TargetAssemblyTypeName: Test, Assembly-CSharp
-        m_MethodName: duck
+        m_TargetAssemblyTypeName: Sound, Assembly-CSharp
+        m_MethodName: Sound1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
