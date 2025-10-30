@@ -118,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator DisablePlayerCollider(float disableTime)
     {
+        yield return new WaitForSeconds(0.1f);
         playerCollider.enabled = false;
         yield return new WaitForSeconds(disableTime);
         playerCollider.enabled = true;

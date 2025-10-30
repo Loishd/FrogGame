@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LadderScript : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class LadderScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && canInteract == true)
         {
             PlayerStatus.Instance.climbingState = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadSceneAsync("ShootingTest");
         }
     }
 
