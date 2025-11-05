@@ -9,8 +9,9 @@ public class BasicEnemyShooting : MonoBehaviour
     public GameObject player;
     private float timer;
     public float shootCD = 2; //Cooldown
+    public int shootAmount = 1;
     public float triggerDistance = 15f; //In this range, enemy will shoot
-
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -26,18 +27,22 @@ public class BasicEnemyShooting : MonoBehaviour
 
             if (distance <= triggerDistance)
             {
-                //Shoot with Cooldown
-                timer += Time.deltaTime;
-
-                if (timer > shootCD)
+                //Shoot amount
+                for (int i = 0; i < shootAmount; i++)
                 {
-                    timer = 0;
-                    Shoot();
+                    //Shoot with Cooldown
+                    timer += Time.deltaTime;
+
+                    if (timer > shootCD)
+                    {
+                        timer = 0;    
+                        Shoot();
+                    }
                 }
             }
 
             //Manually Checking Distance
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.T))
             {
                 Debug.Log($"Distance : {distance}");
             }
